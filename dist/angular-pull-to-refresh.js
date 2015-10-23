@@ -1,19 +1,20 @@
 /**
  * angular-pull-to-refresh
- * @version v0.3.0 - 2013-11-14
+ * @version v0.3.0 - 2015-10-23
  * @link https://github.com/mgcrea/angular-pull-to-refresh
  * @author Olivier Louvignes <olivier@mg-crea.com>
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 (function (window, document, undefined) {
   'use strict';
+  // Source: src/angular-pull-to-refresh.js
   angular.module('mgcrea.pullToRefresh', []).constant('pullToRefreshConfig', {
     treshold: 60,
     debounce: 400,
     text: {
-      pull: 'pull to refresh',
-      release: 'release to refresh',
-      loading: 'refreshing...'
+      pull: 'Pull to refresh',
+      release: 'Release to refresh',
+      loading: 'Refreshing...'
     },
     icon: {
       pull: 'fa fa-arrow-down',
@@ -36,6 +37,7 @@
             var config = angular.extend({}, pullToRefreshConfig, iAttrs);
             var scrollElement = iElement.parent();
             var ptrElement = window.ptr = iElement.children()[0];
+            // Initialize isolated scope vars
             scope.text = config.text;
             scope.icon = config.icon;
             scope.status = 'pull';
@@ -47,7 +49,7 @@
             };
             var shouldReload = false;
             iElement.bind('touchmove', function (ev) {
-              var top = scrollElement[0].scrollTop;
+              var top = window.document.body.scrollTop;
               if (top < -config.treshold && !shouldReload) {
                 setStatus('release');
               } else if (top > -config.treshold && shouldReload) {
@@ -79,6 +81,7 @@
       };
     }
   ]);
+  // Source: src/angular-pull-to-refresh.tpl.js
   angular.module('mgcrea.pullToRefresh').run([
     '$templateCache',
     function ($templateCache) {

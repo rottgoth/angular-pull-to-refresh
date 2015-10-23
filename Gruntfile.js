@@ -107,8 +107,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          cleancss: true,
-          report: 'gzip'
+          cleancss: true
         },
         files: {
           '<%= yo.dist %>/<%= pkg.name %>.min.css': ['<%= yo.src %>/{,*/}*.less']
@@ -199,8 +198,7 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= meta.banner %>',
-        report: 'gzip'
+        banner: '<%= meta.banner %>'
       },
       dist: {
         files: {

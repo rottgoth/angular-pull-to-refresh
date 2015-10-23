@@ -6,9 +6,9 @@ angular.module('mgcrea.pullToRefresh', [])
     treshold: 60,
     debounce: 400,
     text: {
-      pull: 'pull to refresh',
-      release: 'release to refresh',
-      loading: 'refreshing...'
+      pull: 'Pull to refresh',
+      release: 'Release to refresh',
+      loading: 'Refreshing...'
     },
     icon: {
       pull: 'fa fa-arrow-down',
@@ -46,7 +46,7 @@ angular.module('mgcrea.pullToRefresh', [])
 
           var shouldReload = false;
           iElement.bind('touchmove', function(ev) {
-            var top = scrollElement[0].scrollTop;
+            var top = window.document.body.scrollTop;
             if(top < -config.treshold && !shouldReload) {
               setStatus('release');
             } else if(top > -config.treshold && shouldReload) {
